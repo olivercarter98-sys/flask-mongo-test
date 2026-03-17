@@ -6,14 +6,17 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URI=mongodb://mongo:27017/flasktest
+      - MONGO_URI=mongodb://admin:securepassword@mongo:27017/flasktest?authSource=admin
 
   mongo:
     image: mongo:6
     ports:
       - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: securepassword # Dev password, do not use in production
     volumes:
-      - mongo-data:/data/db
+      - mongo_data:/data/db
 
 volumes:
-  mongo-data:
+  mongo_data:
