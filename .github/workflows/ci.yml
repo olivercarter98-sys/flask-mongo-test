@@ -25,6 +25,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }} 
+          restore-keys: |
+              ${{ runner.os }}-pip-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -34,4 +42,4 @@ jobs:
         env:
           MONGO_URI: mongodb://localhost:27017/flasktest
         run: |
-          python -m pytest
+          python -m pytest -v
