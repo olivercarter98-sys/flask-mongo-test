@@ -102,7 +102,7 @@ Every push or pull request to `main` triggers the GitHub Actions workflow which:
 
 A green tick indicates all tests passed. A red cross indicates a failure that should be investigated before merging.
 
-> **Note:** A Node.js deprecation warning may appear in the Actions log relating to GitHub's internal MongoDB service container action. This is outside our control and does not affect the pipeline. GitHub have indicated this will be resolved before June 2nd, 2026.
+> **Note:** A Node.js deprecation warning may appear in the Actions log relating to GitHub's internal MongoDB service container action. This does not affect the pipeline. GitHub have indicated this will be resolved before June 2nd, 2026.
 
 ---
 
