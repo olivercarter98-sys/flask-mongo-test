@@ -160,8 +160,4 @@ Credentials are static. In production AWS Secrets Manager should be configured t
 - Automated credential rotation
 - Penetration testing and security audit
 
----
 
-## Notes
-
-This project was built as part of a structured DevOps learning plan in preparation for a Development Lead role at a SaaS bioinformatics startup. It is not intended for production use in its current state.
