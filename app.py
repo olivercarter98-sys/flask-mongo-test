@@ -1,6 +1,10 @@
 from flask import Flask
 from pymongo import MongoClient
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
 app = Flask(__name__)
 
 client = MongoClient(os.getenv("MONGO_URI"))
@@ -12,9 +16,12 @@ def hello_world():
 
 @app.route("/test-db")
 def test_db():
-    db.test_collection.insert_one({"message": "Hello, World!"})
-    doc = db.test_collection.find_one()
-    return f"DB connected. Found: {doc['message']}"
+    try:
+        db.test_collection.insert_one({"message": "Hello, World!"})
+        doc = db.test_collection.find_one()
+        return f"DB connected. Found: {doc['message']}"
+    except Exception as e:
+        return f"Database error: {str(e)}", 500
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
